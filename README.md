@@ -2,6 +2,10 @@
 
 tar serializer for Serde
 
+## Status
+
+Only simple Serialization at the moment: support for Structures, Map<String, T> and primitive types
+
 ## Usage
 
 
@@ -22,24 +26,16 @@ struct SubItem {
     pub id: i32,
 }
 
-#[derive(Debug, Deserialize)]
-struct Project {
-    pub name: String,
-
-    #[serde(rename = "Item", default)]
-    pub items: Vec<Item>
-}
-
 fn main() {
-    let s = Item {
+     let item = Item {
         name: String::from("test"),
         sub: SubItem {
             id: 12
         }
     };
 
+    let mut file = std::fs::File::create("/tmp/serde_tar-test.tar").unwrap();
     
-    let project: Project = from_reader(s.as_bytes()).unwrap();
-    println!("{:#?}", project);
+    serde_tar::to_writer(&mut file, &item).ok();
 }
 ```
