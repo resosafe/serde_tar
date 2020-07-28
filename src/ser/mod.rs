@@ -395,7 +395,7 @@ impl serde::Serializer for MapKeySerializer {
 
     #[inline]
     fn serialize_char(self, value: char) -> Result<String> {
-        Ok(String::from(value))
+        self.serialize_str(&value.to_string())
     }
 
     #[inline]
