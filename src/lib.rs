@@ -1,5 +1,8 @@
-#[macro_use]
 extern crate serde;
+
+#[cfg(test)]
+#[macro_use]
+extern crate serde_derive;
 
 pub mod error;
 pub mod ser;

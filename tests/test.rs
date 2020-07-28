@@ -1,11 +1,3 @@
-# serde_tar
-
-tar serializer for Serde
-
-## Usage
-
-
-```rust
 #[macro_use]
 extern crate serde_derive;
 extern crate serde;
@@ -22,24 +14,18 @@ struct SubItem {
     pub id: i32,
 }
 
-#[derive(Debug, Deserialize)]
-struct Project {
-    pub name: String,
 
-    #[serde(rename = "Item", default)]
-    pub items: Vec<Item>
-}
+#[test]
+fn serialize_struct() {
 
-fn main() {
-    let s = Item {
+    let item = Item {
         name: String::from("test"),
         sub: SubItem {
             id: 12
         }
     };
 
+    let mut file = std::fs::File::create("/tmp/serde_tar-test.tar").unwrap();
     
-    let project: Project = from_reader(s.as_bytes()).unwrap();
-    println!("{:#?}", project);
+    assert_eq!(serde_tar::to_writer(&mut file, &item), Ok(()));
 }
-```

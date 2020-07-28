@@ -537,34 +537,3 @@ where
 }
 
 
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use serde::ser::{SerializeMap, SerializeStruct};
-    use serde::Serializer as SerSerializer;
-
-
-    #[test]
-    fn test_serialize_struct() {
-        #[derive(serde::Serialize)]
-        struct Person {
-            name: String,
-            age: u32,
-            flag: bool,
-        }
-
-        let bob = Person {
-            name: "Bob".to_string(),
-            age: 42,
-            flag: false
-        };
-
-        let mut file = std::fs::File::create("/tmp/serde-test.tar").unwrap();
-        let mut ser = Serializer::new(&mut file);
-        bob.serialize(&mut ser).unwrap();
-
-        //let got = String::from_utf8(buffer).unwrap();
-        assert_eq!(1, 1);
-    }
-}

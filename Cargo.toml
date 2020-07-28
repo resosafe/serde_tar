@@ -1,12 +1,17 @@
 [package]
 name = "serde_tar"
 version = "0.1.0"
-authors = ["Jean Collonvillé <jcollonville@kertel.com>"]
+authors = ["Jean Collonvillé <jcollonville@resosafe.fr>"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "tar based serializer for Serde"
+license = "MIT"
+repository = "https://github.com/resosafe/serde_tar"
 
 [dependencies]
 log = "0.4"
-serde = { version = "1.0", features = ["derive"] }
+serde = "1.0"
 tar = "0.4"
+
+
+[dev-dependencies]
+serde_derive = "1.0"
