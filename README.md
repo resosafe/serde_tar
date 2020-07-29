@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/resosafe/serde_tar.svg?branch=master)](https://travis-ci.org/github/resosafe/serde_tar)
+![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)
+
 # serde_tar
 
 tar serializer for Serde
